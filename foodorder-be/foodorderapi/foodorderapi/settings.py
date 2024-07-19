@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'foodorderauthapp',
+    'restaurantownerapp',
+    'customerapp',
 ]
 
 MIDDLEWARE = [
