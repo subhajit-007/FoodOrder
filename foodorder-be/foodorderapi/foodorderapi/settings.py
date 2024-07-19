@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'foodorderauthapp',
     'restaurantownerapp',
     'customerapp',
+    'ordersapp',
 ]
 
 MIDDLEWARE = [
