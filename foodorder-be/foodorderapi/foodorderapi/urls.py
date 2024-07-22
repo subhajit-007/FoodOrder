@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/auth/', include('foodorderauthapp.urls')),
     path('api/restaurant/', include('restaurantownerapp.urls')),
     path('api/customer/', include('customerapp.urls')),
+    path('api/orders/', include('ordersapp.urls')),
 ]
