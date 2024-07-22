@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<section class="navbar-container">
+    <mat-toolbar color="primary">
+        <a [routerLink]="'/'" class="brand-name"><span>{{ appStrings?.common?.brandName }}</span></a>
+
+        @if (!isAuthScreen) {
+        <span class="spacer"></span>
+        @if (role === "customer") {
+        <mat-form-field class="search-bar" appearance="fill">
+            <input matInput type="text" placeholder="Search books by name, author, genre." />
+            <button matSuffix mat-icon-button aria-label="Search">
+                <mat-icon class="icon-size">search</mat-icon>
+            </button>
+        </mat-form-field>
+        }
+
+        <span class="spacer"></span>
+
+        @if (isUserLoggedIn$ | async) {
+        <a mat-button (click)="logout()">Log out</a>
+        @if (isCartVisiable()) {
+        <button mat-button>Go to Cart</button>
+        }
+        } @else {
+        <a mat-button [routerLink]="'/user/login'">Login</a>
+        <button mat-button [routerLink]="'/book-owner/login'">Became a Seller</button>
+        }
+        }
+    </mat-toolbar>
+</section>
