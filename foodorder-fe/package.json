@@ -9,6 +9,9 @@
     "test": "ng test"
   },
   "private": true,
+  "config": {
+    "devapiurl": "http://127.0.0.1:8000/api"
+  },
   "dependencies": {
     "@angular/animations": "^18.0.0",
     "@angular/cdk": "^18.1.1",

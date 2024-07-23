@@ -11,14 +11,15 @@ export const STRINGS = {
     emailPlaceHolder: 'Enter your email id eg. subha@example.com',
     passwordPlaceHolder: 'Enter your password',
     usernamePlaceHolder: "Enter your username",
+    devApiUrl: ""
   },
   customer: {
-    loginHeaderText: 'Login as a Buyer',
-    signupHeaderText: 'Register as a Buyer',
+    loginHeaderText: 'Login',
+    signupHeaderText: 'Register',
   },
-  bookOwner: {
-    loginHeaderText: 'Login as a Book Seller',
-    signupHeaderText: 'Register as a Seller',
-    addNewBookHeaderText: 'New Book Details',
+  RestaurantOwner: {
+    loginHeaderText: 'Login as a Restaurant Owner',
+    signupHeaderText: 'Register as a Restaurant Owner',
+    addNewRestaurantHeaderText: 'New Restaurant Details',
   },
 };

@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { STRINGS } from '../../../configs/strings';
 import { CustomerService } from '../../../services/customer/customer.service';
+import { AuthService } from '../../../services/shared/auth.service';
+import { DialogService } from '../../../services/shared/dialog.service';
 
 
 const MatModules = [
@@ -39,7 +41,12 @@ export class NavbarComponent {
 
   isUserLoggedIn$: Observable<boolean> = of(false);
 
-  constructor(private router: Router, private changes: ChangeDetectorRef, private customerAuthService: CustomerService) { }
+  constructor(
+    private router: Router,
+    private changes: ChangeDetectorRef,
+    private authService: AuthService,
+    private dialogService: DialogService
+  ) { }
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -63,7 +70,7 @@ export class NavbarComponent {
 
   // Checks user logged in or not
   isLoggedIn(): void {
-    // this.isUserLoggedIn$ = this.customerAuthService.isLoggedIn();
+    this.isUserLoggedIn$ = this.authService.isLoggedIn();
   }
 
   getToken(): string | null {
@@ -71,16 +78,17 @@ export class NavbarComponent {
   }
 
   logout() {
-    // this.customerAuthService.logout().subscribe({
-    //   next: (res: any) => {
-    //     console.log("Logout response => \n", res)
-    //     alert("Successfully Logout")
-    //   },
-    //   error: (err: any) => {
-    //     console.log("Logout error => \n", err)
-    //   }
-    // }
-    // )
+    this.authService.logout().subscribe({
+      next: (res: any) => {
+        // console.log("Logout response => \n", res)
+        this.dialogService.showAlert("Success", "User Logged Out Successfully")
+      },
+      error: (err: any) => {
+        console.error("Logout error => \n", err)
+        this.dialogService.showAlert("Error", "Something went wrong !")
+      }
+    }
+    )
   }
 
   // if user is "customer" and logged in then only show cart option
