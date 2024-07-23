@@ -1,1 +1,18 @@
-<p>restaurant-list works!</p>
+<section class="container-fluid">
+    <section class="content">
+        <mat-list *ngIf="restaurantList.length > 0; else norestaurantListFoundTemplate" class="list-container">
+            @for (restaurant of restaurantList; track restaurant.id) {
+            <mat-list-item class="restaurant-item" (click)="goToRestaurantDetailPage(restaurant?.id)">
+                <span matListItemTitle>{{ restaurant?.attributes?.restaurant_name }}</span>
+                <span matListItemLine>Cuisine {{ restaurant?.attributes?.cuisine }}</span>
+            </mat-list-item>
+            <mat-divider class="my-2"></mat-divider>
+            }
+        </mat-list>
+        <ng-template #norestaurantListFoundTemplate>
+            <div class="notFoundContainer">
+                <h6 class="fs-4">No Restaurants Found</h6>
+            </div>
+        </ng-template>
+    </section>
+</section>
