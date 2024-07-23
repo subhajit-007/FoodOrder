@@ -9,4 +9,11 @@ export const RESTAURANT_ROUTE: Route[] = [
                 (comp) => comp.DashboardComponent
             ),
     },
+    {
+        path: ':restaurantId/details',
+        loadComponent: () =>
+            import('./restaurant-detail/restaurant-detail.component').then(
+                (comp) => comp.RestaurantDetailComponent
+            ),
+    },
 ];

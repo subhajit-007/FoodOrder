@@ -48,6 +48,6 @@ export class RestaurantListComponent implements OnInit {
   }
 
   goToRestaurantDetailPage(restaurantId: Number): void {
-
+    this.router.navigate([`/restaurant/${restaurantId}/details`])
   }
 }
